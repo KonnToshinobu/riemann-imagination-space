@@ -11,6 +11,7 @@ published: true
 
 リポジトリ（22 枚の図・全スクリプト・零点データ）：
 https://github.com/KonnToshinobu/riemann-imagination-space
+DOI（Zenodo, v1.0.0）：https://doi.org/10.5281/zenodo.23607696
 
 ---
 

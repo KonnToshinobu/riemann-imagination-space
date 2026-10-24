@@ -7,6 +7,7 @@
 
 The repository (22 figures, all scripts, zero data):
 https://github.com/KonnToshinobu/riemann-imagination-space
+DOI (Zenodo, v1.0.0): https://doi.org/10.5281/zenodo.23607696
 
 ---
 
