@@ -1,5 +1,7 @@
 # The Imagination Space — mapping an amateur's pictures onto the research frontier of the Riemann Hypothesis
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23607696.svg)](https://doi.org/10.5281/zenodo.23607696) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **妄想空間 — 素人の像をリーマン予想の最前線に写像する**(Japanese version: [README_ja.md](README_ja.md))
 
 October 15–24, 2026. A record of 22 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
@@ -170,3 +172,21 @@ python3 scripts/light_cone.py
 Nothing here replaces the training you are getting. Every step that *proved* something in this record was done by Weil, Selberg, Montgomery, Berry, Connes and others, with that training. What this record shows is something smaller and, we think, still worth knowing: a person who cannot compute can still *point*, and if someone translates and tests what he points at, the pointing lands on the right places surprisingly often — including on the exact spot where the proof is stuck. The last unsolved step is a definition, not a calculation. Definitions are made of pictures first.
 
 *Pictures: Toshinobu Konno. Translation, numerical experiments, and text: Claude (Anthropic). 2026-10-15 to 10-24.*
+
+## How to cite
+
+Toshinobu Konno (2026). *riemann-imagination-space: v1.0.0 — first public release* (with numerical experiments and translation by Claude, Anthropic). Zenodo. https://doi.org/10.5281/zenodo.23607696
+
+```bibtex
+@software{konno2026imagination,
+  author    = {Konno, Toshinobu},
+  title     = {riemann-imagination-space: v1.0.0 --- first public release},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {v1.0.0},
+  doi       = {10.5281/zenodo.23607696},
+  url       = {https://doi.org/10.5281/zenodo.23607696}
+}
+```
+
+Entry-point essays: [Medium (English)](articles/medium_en.md) · [Zenn (Japanese)](articles/zenn_ja.md)

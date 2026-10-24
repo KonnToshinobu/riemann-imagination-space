@@ -1,5 +1,7 @@
 # 妄想空間 — 素人の像をリーマン予想の最前線に写像する
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23607696.svg)](https://doi.org/10.5281/zenodo.23607696) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 **Riemann Lab: mapping an amateur's geometric intuitions onto the research frontier of the Riemann Hypothesis**
 
 **English version (main): [README.md](README.md)**
@@ -166,3 +168,9 @@ python3 scripts/light_cone.py
 ---
 
 *像：近野利信（Toshinobu Konno）。翻訳・数値実験・執筆：Claude（Anthropic）。2026-10-15〜24。*
+
+## 引用するには
+
+近野利信 (2026). *riemann-imagination-space: v1.0.0 — first public release*（数値実験・翻訳：Claude, Anthropic）. Zenodo. https://doi.org/10.5281/zenodo.23607696
+
+BibTeX は英語版 README の末尾にあります。入口の記事：[Zenn（日本語）](articles/zenn_ja.md) · [Medium（英語）](articles/medium_en.md)
