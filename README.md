@@ -4,6 +4,8 @@
 
 **妄想空間 — 素人の像をリーマン予想の最前線に写像する**(Japanese version: [README_ja.md](README_ja.md))
 
+**Start here (essay):** [Zenn, Japanese](https://zenn.dev/kontosh/articles/f88eff945b608e) · English essay: [articles/medium_en.md](articles/medium_en.md) (Medium link coming)
+
 October 15–24, 2026. A record of 22 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
 
 > **This is not a proof.** Every figure here is a numerical re-confirmation of a known theorem, a known conjecture, or a known open point. No new theorem is contained in this repository.
@@ -189,4 +191,4 @@ Toshinobu Konno (2026). *riemann-imagination-space: v1.0.0 — first public rele
 }
 ```
 
-Entry-point essays: [Medium (English)](articles/medium_en.md) · [Zenn (Japanese)](articles/zenn_ja.md)
+Entry-point essays: [Zenn (Japanese, published)](https://zenn.dev/kontosh/articles/f88eff945b608e) · [Medium (English)](articles/medium_en.md)
