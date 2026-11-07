@@ -6,7 +6,7 @@
 
 **Start here (essay):** [Zenn, Japanese](https://zenn.dev/kontosh/articles/f88eff945b608e) · English essay: [articles/medium_en.md](articles/medium_en.md) (Medium link coming)
 
-October 15–24, 2026. A record of 23 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
+October 15–24, 2026. A record of 24 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
 
 > **This is not a proof.** Every figure here is a numerical re-confirmation of a known theorem, a known conjecture, or a known open point. No new theorem is contained in this repository.
 > Its value is a single map: *which pictures, spoken only in metaphor, correspond exactly to which parts of present-day mathematics — and where the correspondence breaks.*
@@ -55,7 +55,7 @@ If you are a student starting out in number theory or mathematical physics, this
 
 ---
 
-## 2. The 23 experiments
+## 2. The 24 experiments
 
 Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers in parentheses are the accuracy of the check.
 
@@ -82,6 +82,7 @@ Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers 
 21. **sister_world.png** — The elliptic curve y²=x³+x+1 counted over 427 primes: |a_p|≤2√p (Hasse), zeros on the circle of radius √p, intersection form on E×E always of signature (+1,−3), Gram matrix [[−2,−a_p],[−a_p,−2p]] orthogonal to the time axis negative semidefinite ⇔ 4p−a_p²≥0.
 22. **light_cone.png** — Two tori crossing perpendicularly, H and V, are the two null lines of the light cone (H²=V²=0, H·V=1); time axis H+V (+2), space axis H−V (−2); Δ', Γ' are orthogonal to time and spacelike.
 23. **breathing_spectrogram.png** — Spectrogram of the "breath of the primes" (ψ(x)−x)/√x for x ≤ 10⁷ (time = log x, Gaussian-window STFT). Every horizontal stripe sits at a zero γ and keeps constant brightness across the whole record (10-stripe mean 0.997 → 0.998). One fake zero at β=0.7 makes its stripe swell like e^{(β−1/2)u} (predicted ×4.5, measured ×4.5). RH = every overtone keeps breathing in the same proportion to the fundamental, forever.
+24. **ruler_margin.png** — The ruler's margin. For windows L=1…8, the smallest ratio of Weil's form Q_W (candle − holes) to the ordinary norm ‖f‖² (generalized eigenvalue) is already 0 at L=1 (1e-16…1e-10; the zero-side check agrees). The number of patterns measured as length ≈ 0 equals (basis size − 22): the only visible directions are 11 effective zeros × (cos, sin). Candle alone and holes alone are both negative (min −1.7, −2.5); only their difference is ≥ 0. The ruler is a projection onto the zero frequencies; there is no margin. The AI's guess "measure by minimal-surface area" fails if area is positive in the ordinary sense.
 
 ---
 
@@ -148,6 +149,7 @@ python3 scripts/white_light.py
 python3 scripts/sister_world.py
 python3 scripts/light_cone.py
 python3 scripts/breathing_spectrogram.py
+python3 scripts/ruler_margin.py
 ```
 
 `CHANGELOG_ja.md` is the day-by-day log (Japanese).
