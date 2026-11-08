@@ -41,7 +41,7 @@ for name, (a, b, c) in forms.items():
     else:
         grid = np.array([[float(abs(Lambda(mp.mpc(sg, t), a, b, c))) for sg in sig] for t in tt]); np.save(cache, grid)
     # (1) 線上の零点：Λ(1/2+it) は実数 → 符号変化を二分法で精密化
-    tf = np.arange(0.3, T, 0.05)
+    tf = np.arange(0.3, T, 0.02)
     vals = np.array([float(mp.re(Lambda(mp.mpc(0.5, t), a, b, c))) for t in tf])
     on = []
     for k in np.nonzero(np.sign(vals[:-1]) != np.sign(vals[1:]))[0]:
@@ -57,6 +57,14 @@ for name, (a, b, c) in forms.items():
                 except Exception: continue
                 if 0 < z.real < 1 and 0.3 < z.imag < T and abs(z.real - 0.5) > 1e-6 and abs(Lambda(z, a, b, c)) < 1e-10:
                     if all(abs(z - w) > 1e-6 for w in off): off.append(z)
+    # 鏡の対称性 Λ(s)=Λ(1−s), Λ(s̄)=conj Λ(s) → σ+it が零点なら (1−σ)+it も零点。取りこぼしを補完して検証
+    for z in list(off):
+        m = mp.mpc(1 - z.real, z.imag)
+        if all(abs(m - w) > 1e-6 for w in off):
+            try:
+                m2 = mp.findroot(lambda s: Lambda(s, a, b, c), m, tol=1e-16, maxsteps=60)
+                if abs(Lambda(m2, a, b, c)) < 1e-10 and all(abs(m2 - w) > 1e-6 for w in off): off.append(m2)
+            except Exception: pass
     # (3) 偏角の原理で総数を検算：長方形 [−0.3,1.3]×[0.3,T]
     def count_zeros():
         pts = []
