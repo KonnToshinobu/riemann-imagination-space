@@ -3,3 +3,4 @@ __pycache__/
 *.log
 .DS_Store
 data/epstein_grid_*.npy
+data/epstein_zeros_*.json

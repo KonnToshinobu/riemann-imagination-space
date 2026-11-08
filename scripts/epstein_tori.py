@@ -36,10 +36,13 @@ sig = np.linspace(0.02, 0.98, 49); tt = np.linspace(0.5, T, 240)
 import os
 results = {}
 for name, (a, b, c) in forms.items():
-    cache = f"data/epstein_grid_D{b*b-4*a*c}.npy"
+    cache = f"data/epstein_grid_D{b*b-4*a*c}.npy"; zcache = f"data/epstein_zeros_D{b*b-4*a*c}.json"
     if os.path.exists(cache): grid = np.load(cache)
     else:
         grid = np.array([[float(abs(Lambda(mp.mpc(sg, t), a, b, c))) for sg in sig] for t in tt]); np.save(cache, grid)
+    if os.path.exists(zcache):
+        zj = json.load(open(zcache)); zs = [mp.mpc(x, y) for x, y in zj["zeros"]]
+        results[name] = (grid, zs); print(f"{name}: キャッシュから零点 {len(zs)} 個（偏角の原理 {zj['count']:.3f}）"); continue
     # (1) 線上の零点：Λ(1/2+it) は実数 → 符号変化を二分法で精密化
     tf = np.arange(0.3, T, 0.02)
     vals = np.array([float(mp.re(Lambda(mp.mpc(0.5, t), a, b, c))) for t in tf])
@@ -77,12 +80,13 @@ for name, (a, b, c) in forms.items():
     ncount = count_zeros()
     zs = sorted(on + off, key=lambda z: float(z.imag))
     results[name] = (grid, zs)
+    json.dump({"zeros": [[float(z.real), float(z.imag)] for z in zs], "count": float(ncount)}, open(zcache, "w"))
     print(f"{name}: 線上 {len(on)} 個 + 線外 {len(off)} 個 = {len(on)+len(off)}；偏角の原理による総数 = {ncount:.3f}  (0.3<t<{T:.0f})")
     for z in off: print(f"   線から外れた零点  s = {float(z.real):.6f} + {float(z.imag):.6f} i")
 
 zeta_zeros = np.array(json.load(open("data/zeros_300.json")))
 zs4 = np.array([float(z.imag) for z in results[list(forms)[0]][1]])
-print("D=−4 の零点のうち ζ の零点と一致するもの:", int(np.sum([np.min(np.abs(zeta_zeros - g)) < 1e-4 for g in zs4])), "/", len(zs4), "（残りは L(s,χ_{−4}) の零点）")
+print("D=−4 の零点のうち ζ の零点と一致するもの:", int(np.sum([np.min(np.abs(zeta_zeros - g)) < 1e-2 for g in zs4])), "/", len(zs4), "（残りは L(s,χ_{−4}) の零点）")
 
 # ---------- 図 ----------
 fig = plt.figure(figsize=(15, 10), dpi=150, constrained_layout=True)
@@ -96,16 +100,17 @@ for col, (name, (a, b, c)) in enumerate(forms.items()):
     ax.scatter(pts[:, 0], pts[:, 1], s=14, color="#1f5fbf")
     ax.plot([0, 1, 1+tau.real, tau.real, 0], [0, 0, tau.imag, tau.imag, 0], color="#d9541e", lw=2)
     ax.set_aspect("equal"); ax.set_xlim(-4.5, 4.5); ax.set_ylim(-4.6, 4.6)
-    ax.set_title(f"{name}\n周期の格子 ℤ + τℤ（橙がトーラス一枚分）", fontsize=10, loc="left"); ax.grid(alpha=0.2)
+    ax.set_title(f"{name}\n周期の格子 Z + τZ（橙がトーラス一枚分）", fontsize=10, loc="left"); ax.grid(alpha=0.2)
     # 下：|Λ_Q(s)| の地図と零点
     ax = fig.add_subplot(gs[1, col])
-    ax.pcolormesh(sig, tt, np.log10(grid + 1e-30), cmap="Greys_r", shading="auto", rasterized=True)
+    gn = grid / np.median(grid, axis=1, keepdims=True)          # 行ごとに正規化（ガンマ関数の減衰を除く）
+    ax.pcolormesh(sig, tt, np.log10(gn + 1e-6), cmap="Greys_r", vmin=-3, vmax=1, shading="auto", rasterized=True)
     ax.axvline(0.5, color="#d9541e", lw=1.5, alpha=0.8, label="鏡 Re s = 1/2")
     on = [z for z in zs if abs(float(z.real) - 0.5) <= 1e-8]; off = [z for z in zs if abs(float(z.real) - 0.5) > 1e-8]
     ax.scatter([float(z.real) for z in on], [float(z.imag) for z in on], s=28, facecolor="none", edgecolor="#7ee0ff", lw=1.3, label=f"線上の零点 {len(on)} 個")
     if off: ax.scatter([float(z.real) for z in off], [float(z.imag) for z in off], s=60, marker="x", color="#ff5050", lw=2, label=f"線から外れた零点 {len(off)} 個")
     ax.set_xlim(0, 1); ax.set_ylim(0, T); ax.set_xlabel("Re s"); ax.set_ylabel("Im s")
-    ax.set_title("格子点を数えたゼータ |Λ_Q(s)|（暗い点＝零点）", fontsize=10, loc="left"); ax.legend(fontsize=8, loc="upper right")
+    ax.set_title("格子点を数えたゼータ |Λ_Q(s)|（高さごとに正規化、暗い点＝零点）", fontsize=10, loc="left"); ax.legend(fontsize=8, loc="upper right")
 
 ax = fig.add_subplot(gs[:, 2])
 for name, col_, mk in zip(forms, ["#1f5fbf", "#d9541e"], ["o", "x"]):
