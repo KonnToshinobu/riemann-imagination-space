@@ -6,7 +6,7 @@
 
 **Start here (essay):** [Zenn, Japanese](https://zenn.dev/kontosh/articles/f88eff945b608e) · English essay: [articles/medium_en.md](articles/medium_en.md) (Medium link coming)
 
-October 15–24, 2026. A record of 29 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
+October 15–24, 2026. A record of 30 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
 
 > **This is not a proof.** Every figure here is a numerical re-confirmation of a known theorem, a known conjecture, or a known open point. No new theorem is contained in this repository.
 > Its value is a single map: *which pictures, spoken only in metaphor, correspond exactly to which parts of present-day mathematics — and where the correspondence breaks.*
@@ -55,7 +55,7 @@ If you are a student starting out in number theory or mathematical physics, this
 
 ---
 
-## 2. The 29 experiments
+## 2. The 30 experiments
 
 Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers in parentheses are the accuracy of the check.
 
@@ -88,6 +88,7 @@ Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers 
 27. **dual_torus.png** — On E_i×E_i (H* of dimension 16) build as matrices the winding-up L=ω∧·, the unwinding Λ=L* ([Λ,L]=H; hard Lefschetz L^k: H^{2−k}≅H^{2+k} checked) and the projection to the dual torus Φ' (e_J ↦ ±f_{J^c}, pulled back by the principal polarization). (1) Φ' L Φ'^{-1} = +Λ: on the far side, winding becomes unwinding. (2) The 4 cloths map to cloths (e12↔e34: horizontal and vertical fibers swap; the diagonal and the graph of i change sign); the light ω is fixed. (3) The Weil operator C=∧²J* is +1 on cloths, −1 on (2,0)+(0,2). On tori the "cloth bandage" tightens (Λ is a cloth operation) because the far side — the dual torus — exists.
 28. **weil_classes.png** — A 4-dimensional complex torus with K=Q(i) acting (H⁴ has dimension 70). Build the Weil classes W = ∧⁴_K V* (real and imaginary parts of the K-determinant: two integer 4-forms). (1) W is of type (2,2) (a Hodge class) exactly when S has signature (2,2); for (3,1) its (2,2) component is 0. (2) Generic Weil type (random P ∈ U(2,2)): by LLL the rational (1,1) classes are θ alone, divisor products D⁴ = Q·θ² (1-dim), rational Hodge classes B⁴_Q = ⟨θ², W_R, W_I⟩ (3-dim), so W is not a product of divisors (residual 1.00). (3) Special point A=E_i⁴: NS rank 16, D⁴ = B⁴_Q = 36-dim, W is a divisor product (residual 4e-15). (4) The light's ruler ∫W∧W has eigenvalues (8,8), positive definite, θ²·W=0 (primitive). The shadow is there and the light sees it with the sign of a cloth, yet no cloth is found.
 29. **kaleidoscope.png** — On H²(E_i×E_i)=ℤ⁶ (signature (3,3)), mirrors = reflections s_δ(x)=x+Q(x,δ)δ in lattice vectors with δ²=−2. (A) The family's kaleidoscope (86 mirrors orthogonal to θ, the image of Sp(4,ℤ)): the 43,018 images of the horizontal fiber e12 (depth ≤4) all have square 0 and θ-degree 1 — each is a cloth of *some* torus — but only 2 are cloths of this torus: e12 and e34 (the pair swapped by the dual torus). (B) This torus's own kaleidoscope (62 mirrors inside NS): from e12 one reaches V, Δ, Γ_i and the anti-diagonal, all at depth 1. (C) Under the true monodromy of the subfamilies (SL₂(ℤ)×SL₂(ℤ); diagonal SL₂(ℤ)) the invariant classes have rank 2 and 3 and are all cloths. The 4-dimensional Weil classes (1 of 3 is a cloth) are the first place where an invariant shadow has no cloth.
+30. **soap_films.png** — On E_i×E_i (flat metric, light ω=dx1∧dy1+dx2∧dy2) compare, for integer 2-classes v, the light integral ∫ω with the least area of a film bounded by that shadow (mass norm, computed exactly via the self-dual decomposition). Over all 15,624 classes with |coeff|≤2: equality mass=|∫ω| holds only for (1,1) classes, and among those exactly inside the light cone (v²≥0): H, V, Δ, the graph of i are single flat films. Spacelike cloths (H−V, Δ−H−V, v²=−2) have light 0 and area 2, can never attain equality, and appear only as a film of light 2 minus films of light 1+1. Non-(1,1) shadows (the conjugation graph = a Lagrangian torus, the x1x2-plane, Re dz1∧dz2) have no film reaching the light. A microcosm of why the Weil classes (θ²·W=0, light 0) must be differences of two cloths of equal area.
 
 ---
 
@@ -160,6 +161,7 @@ python3 scripts/hodge_torus.py
 python3 scripts/dual_torus.py
 python3 scripts/weil_classes.py      # needs sympy (LLL)
 python3 scripts/kaleidoscope.py
+python3 scripts/soap_films.py
 ```
 
 `CHANGELOG_ja.md` is the day-by-day log (Japanese).
