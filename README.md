@@ -6,7 +6,7 @@
 
 **Start here (essay):** [Zenn, Japanese](https://zenn.dev/kontosh/articles/f88eff945b608e) · English essay: [articles/medium_en.md](articles/medium_en.md) (Medium link coming)
 
-October 15–24, 2026. A record of 27 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
+October 15–24, 2026. A record of 28 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
 
 > **This is not a proof.** Every figure here is a numerical re-confirmation of a known theorem, a known conjecture, or a known open point. No new theorem is contained in this repository.
 > Its value is a single map: *which pictures, spoken only in metaphor, correspond exactly to which parts of present-day mathematics — and where the correspondence breaks.*
@@ -55,7 +55,7 @@ If you are a student starting out in number theory or mathematical physics, this
 
 ---
 
-## 2. The 27 experiments
+## 2. The 28 experiments
 
 Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers in parentheses are the accuracy of the check.
 
@@ -86,6 +86,7 @@ Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers 
 25. **epstein_tori.png** — All zeros with 0<Im s<60 of the Epstein zeta Z_Q(s) of two complex tori (period lattices x²+y² and x²+5y²): on-line zeros by sign change, off-line by complex Newton, totals checked by the argument principle (38 and 53, both exact). x²+y² (Z=4ζ(s)L(s,χ₋₄), prime cloth present): all 38 on the line, 13 of them Riemann zeros. x²+5y² (class number 2, no Euler product): 39 on the line but **14 off it** (lowest 0.067+15.668i and its mirror). Torus geometry alone does not give 1/2; the cloth must be woven from primes.
 26. **hodge_torus.png** — Five 2-dimensional complex tori (4-dim real tori): H² (rank 6, ruler ∫α∧β of signature (3,3)) split into shadows H^{2,0}⊕H^{0,2} and H^{1,1}. Restricted to H^{1,1} the ruler is the (+1,−3) light cone for every torus (Hodge–Riemann). The cloths (algebraic cycles NS = integer points of H^{1,1}, exhaustive search |coeff|≤4) number ρ = 0,1,2,3,4 depending on the arithmetic of the lattice, and the ruler on NS is always (+1,−(ρ−1)) (Hodge index). Right: for E_τ×E_τ', one extra cloth appears exactly when τ' is isogenous to τ (τ'=(aτ+b)/(cτ+d)): all 411 such points have ρ=3, random τ' gives 2, and with τ=i the points of Q(i) give 4. The ruler can be built by integrating against the light, not by counting.
 27. **dual_torus.png** — On E_i×E_i (H* of dimension 16) build as matrices the winding-up L=ω∧·, the unwinding Λ=L* ([Λ,L]=H; hard Lefschetz L^k: H^{2−k}≅H^{2+k} checked) and the projection to the dual torus Φ' (e_J ↦ ±f_{J^c}, pulled back by the principal polarization). (1) Φ' L Φ'^{-1} = +Λ: on the far side, winding becomes unwinding. (2) The 4 cloths map to cloths (e12↔e34: horizontal and vertical fibers swap; the diagonal and the graph of i change sign); the light ω is fixed. (3) The Weil operator C=∧²J* is +1 on cloths, −1 on (2,0)+(0,2). On tori the "cloth bandage" tightens (Λ is a cloth operation) because the far side — the dual torus — exists.
+28. **weil_classes.png** — A 4-dimensional complex torus with K=Q(i) acting (H⁴ has dimension 70). Build the Weil classes W = ∧⁴_K V* (real and imaginary parts of the K-determinant: two integer 4-forms). (1) W is of type (2,2) (a Hodge class) exactly when S has signature (2,2); for (3,1) its (2,2) component is 0. (2) Generic Weil type (random P ∈ U(2,2)): by LLL the rational (1,1) classes are θ alone, divisor products D⁴ = Q·θ² (1-dim), rational Hodge classes B⁴_Q = ⟨θ², W_R, W_I⟩ (3-dim), so W is not a product of divisors (residual 1.00). (3) Special point A=E_i⁴: NS rank 16, D⁴ = B⁴_Q = 36-dim, W is a divisor product (residual 4e-15). (4) The light's ruler ∫W∧W has eigenvalues (8,8), positive definite, θ²·W=0 (primitive). The shadow is there and the light sees it with the sign of a cloth, yet no cloth is found.
 
 ---
 
@@ -156,6 +157,7 @@ python3 scripts/ruler_margin.py
 python3 scripts/epstein_tori.py      # ~50 min (mpmath, 40 digits)
 python3 scripts/hodge_torus.py
 python3 scripts/dual_torus.py
+python3 scripts/weil_classes.py      # needs sympy (LLL)
 ```
 
 `CHANGELOG_ja.md` is the day-by-day log (Japanese).

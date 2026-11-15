@@ -2,3 +2,4 @@ mpmath
 numpy
 scipy
 matplotlib
+sympy
