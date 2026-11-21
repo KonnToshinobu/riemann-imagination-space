@@ -6,7 +6,7 @@
 
 **Start here (essay):** [Zenn, Japanese](https://zenn.dev/kontosh/articles/f88eff945b608e) · English essay: [articles/medium_en.md](articles/medium_en.md) (Medium link coming)
 
-October 15–24, 2026. A record of 31 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
+October 15–24, 2026. A record of 32 figures and one correspondence table, produced by the back-and-forth between one person with no mathematical training beyond high school and an AI (Claude) that translated his pictures into mathematics and ran numerical experiments on them.
 
 > **This is not a proof.** Every figure here is a numerical re-confirmation of a known theorem, a known conjecture, or a known open point. No new theorem is contained in this repository.
 > Its value is a single map: *which pictures, spoken only in metaphor, correspond exactly to which parts of present-day mathematics — and where the correspondence breaks.*
@@ -55,7 +55,7 @@ If you are a student starting out in number theory or mathematical physics, this
 
 ---
 
-## 2. The 31 experiments
+## 2. The 32 experiments
 
 Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers in parentheses are the accuracy of the check.
 
@@ -90,6 +90,7 @@ Figures are in `figures/`, scripts in `scripts/`, zero data in `data/`. Numbers 
 29. **kaleidoscope.png** — On H²(E_i×E_i)=ℤ⁶ (signature (3,3)), mirrors = reflections s_δ(x)=x+Q(x,δ)δ in lattice vectors with δ²=−2. (A) The family's kaleidoscope (86 mirrors orthogonal to θ, the image of Sp(4,ℤ)): the 43,018 images of the horizontal fiber e12 (depth ≤4) all have square 0 and θ-degree 1 — each is a cloth of *some* torus — but only 2 are cloths of this torus: e12 and e34 (the pair swapped by the dual torus). (B) This torus's own kaleidoscope (62 mirrors inside NS): from e12 one reaches V, Δ, Γ_i and the anti-diagonal, all at depth 1. (C) Under the true monodromy of the subfamilies (SL₂(ℤ)×SL₂(ℤ); diagonal SL₂(ℤ)) the invariant classes have rank 2 and 3 and are all cloths. The 4-dimensional Weil classes (1 of 3 is a cloth) are the first place where an invariant shadow has no cloth.
 30. **soap_films.png** — On E_i×E_i (flat metric, light ω=dx1∧dy1+dx2∧dy2) compare, for integer 2-classes v, the light integral ∫ω with the least area of a film bounded by that shadow (mass norm, computed exactly via the self-dual decomposition). Over all 15,624 classes with |coeff|≤2: equality mass=|∫ω| holds only for (1,1) classes, and among those exactly inside the light cone (v²≥0): H, V, Δ, the graph of i are single flat films. Spacelike cloths (H−V, Δ−H−V, v²=−2) have light 0 and area 2, can never attain equality, and appear only as a film of light 2 minus films of light 1+1. Non-(1,1) shadows (the conjugation graph = a Lagrangian torus, the x1x2-plane, Re dz1∧dz2) have no film reaching the light. A microcosm of why the Weil classes (θ²·W=0, light 0) must be differences of two cloths of equal area.
 31. **twistor_sphere.png** — The flat T⁴ ≅ ℍ/ℤ⁴ carries three complex structures I, J, K and a sphere aI+bJ+cK of them (north pole I = A, south pole −I = Ā, equator = J, K). Counting integer (1,1) classes (cloths) at each point: 4 when the light direction (a,b,c) is rational, 3 at a generic point. The integer classes that remain cloths at every point of the sphere have rank 3 and are exactly the anti-self-dual ones = the front-minus-back differences H−V, Δ−H−V, Γ' (light 0). The timelike cloth H is a cloth only at the poles. The conjugation graph {(z,z̄)}, "not a cloth" in experiment 30, attains area 2 exactly for the equatorial light Im Ω — a cloth as seen from K. "Cloth from every side" is Verbitsky's hyperholomorphic sheaf, the tool Markman used to build the Weil classes.
+32. **stepanov.png** — y²=x³+x+1 over F_p (p=101, 199, 307, 401). The coefficients of the auxiliary polynomial R=Σ_{j<J} x^{pj}[r_j+s_j f^{(p−1)/2}] are actually solved for by Gaussian elimination over F_p, from the linear conditions (M(J+m−1)+M(M−1) of them) that express "f^k D^k R vanishes on S" without knowing S. For all four p: R≢0, vanishing order ≥ M at every point of S (the N values of x with f(x) a nonzero square), and N·M ≤ deg R, all checked. The bound guaranteed by the parameters alone is p/2 + about 2.4√p (74.8, 136.2, 196.3, 249.5); the R actually built gives 60.8, 114.4, 171.4, 221.0 (true N = 52, 108, 150, 215; Hasse–Weil p/2+√p = 60.5, 113.6, 171.0, 220.5). The trick is Frobenius x^p=x plus the vanishing of derivatives of x^{pj} in characteristic p. A different road from Weil's proof in experiments 21–22 (the surface E×E and the light cone): it goes around "there is no surface to put things on" without building one.
 
 ---
 
@@ -164,6 +165,7 @@ python3 scripts/weil_classes.py      # needs sympy (LLL)
 python3 scripts/kaleidoscope.py
 python3 scripts/soap_films.py
 python3 scripts/twistor_sphere.py
+python3 scripts/stepanov.py          # ~1 min
 ```
 
 `CHANGELOG_ja.md` is the day-by-day log (Japanese).
